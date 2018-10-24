@@ -29,6 +29,7 @@
   var a=1;
   //undefined
   ```
+
   *a的声明提到了前面，所以代码不会报错，赋值却托在了后面，所以是输出了为赋值的变量*
 
 ## 标识符
@@ -45,6 +46,7 @@
 ### if
 
 if后面的表达式之中，不要混淆赋值表达式（=）和相等运算符（==）
+
 ```javascript
 var x = 1;
 var y = 2;
@@ -59,6 +61,7 @@ if(x=y){
 ### switch
 
 switch语句后面的表达式，与case语句后面的表示式比较运行结果时，采用的是严格相等运算符，这意味着比较时不会发生类型转换
+
 ```javascript
 var a = 1;
 switch(a){
@@ -70,22 +73,28 @@ switch(a){
 }
 //0
 ```
+
 ### 三元运算符
 
-*应用*
+应用
+
 ```javascript
 var myVar;
 var arr = myVar ? '1':'0';
 console.log(arr);
 //0
 ```
+
 ```javascript
 var msg = '数字' + n + '是' + (n % 2 === 0 ? '偶数' : '奇数');
 ```
+
 ## 循环语句
 
 ### while
-*例子*
+
+例子
+
 ```javascript
 var i=0;
 while(i<100){
@@ -96,8 +105,11 @@ while (true) {
   console.log('Hello, world');
 }//死循环
 ```
+
 ### for
-*所有for循环，都可以改写成while循环*  
+
+所有for循环，都可以改写成while循环
+
 ```javascript
 for(var i=0;i<100;i++){
     console.log(i);
@@ -105,7 +117,9 @@ for(var i=0;i<100;i++){
 ```
 
 ### do while
-*无论如何都会执行一次*
+
+无论如何都会执行一次
+
 ```javascript
 var i=0;
 do{
@@ -115,12 +129,63 @@ do{
 //0
 ```
 
+### break 和 continue
 
+break退出代码块或者循环  
 
+```javascript
+for(var i=0;i<10;i++){
+    console.log(i);
+    if(i===5)
+        break;
+}
+//0,1,2,3,4,5
+```
 
+continue终止本次循坏，开始下一个循环
 
+ ```javascript
+for(var i=0;i<10;i++){
+    if(i===5)
+        continue;
+    console.log(i);
+}
+//0,1,2,3,4,6,7,8,9
+```
 
+### label
 
+标签用于定位语句，便于break,continue指定位置
 
+```javascript
+top:
+for(var i=0;i<3;i++){
+    for(var j=0;j<3;j++){
+        if(i===1 && j===1)
+            break top;
+        console.log(i,j);
+    }
+}
+//0 0
+//0 1
+//0 2
+//1 0
+```
 
-
+```javascript
+top:
+for(var i=0;i<3;i++){
+    for(var j=0;j<3;j++){
+        if(i===1 && j===1)
+            continue top;
+        console.log(i,j);
+    }
+}
+//0 0
+//0 1
+//0 2
+//1 0
+//2 0
+//2 1
+//2 2
+```

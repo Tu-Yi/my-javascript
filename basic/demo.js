@@ -62,3 +62,41 @@ do{
     i++;
 }while(i<0)
 */
+
+/* break
+for(var i=0;i<10;i++){
+    console.log(i);
+    if(i===5)
+        break;
+}
+*/
+
+/* continue
+for(var i=0;i<10;i++){
+    if(i===5)
+        continue;
+    console.log(i);
+}
+*/
+
+/* label break
+top:
+for(var i=0;i<3;i++){
+    for(var j=0;j<3;j++){
+        if(i===1 && j===1)
+            break top;
+        console.log(i,j);
+    }
+}
+*/
+
+/* label continue
+top:
+for(var i=0;i<3;i++){
+    for(var j=0;j<3;j++){
+        if(i===1 && j===1)
+            continue top;
+        console.log(i,j);
+    }
+}
+*/
