@@ -1,3 +1,4 @@
+/* undefined
 var i;
 console.log(i);
 
@@ -13,3 +14,4 @@ console.log(test1());
 
 var o = {};
 console.log(o.p);
+*/

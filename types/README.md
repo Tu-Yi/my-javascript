@@ -6,11 +6,11 @@
 
 javascript的数据类型共有六种:
 
-- 数值（number）：整数和小数
-- 字符串（string）：文本
-- 布尔值（boolean）：true和false
-- undefined：未赋值或不存在
-- null：空
+- 数值（[number](number.md)）：整数和小数
+- 字符串（[string](string.md)）：文本
+- 布尔值（[boolean](boolean.md)）：true和false
+- [undefined](null-undefined.md)：未赋值或不存在
+- [null](null-undefined.md)：空
 - 对象(object，array，function)：集合
 
 ## typeof
@@ -27,7 +27,7 @@ console.log(typeof null);//object
 console.log(typeof undefined);//undefined
 ```
 
-### 未定义和为赋值
+### 未定义和未赋值
 
 ```javascript
 var arr;
