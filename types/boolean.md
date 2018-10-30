@@ -1,5 +1,7 @@
 # boolean
 
+[demo](boolean.js)
+
 ## 规则
 
 运算符

@@ -1,6 +1,6 @@
 # null 和 undefined
 
-**本文引用代码：**[demo](null-undefined.js)
+[demo](null-undefined.js)
 
 特性
 
