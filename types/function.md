@@ -265,5 +265,64 @@ var f = function () {
 f() // true
 ```
 
+## 闭包
 
+通过函数访问函数内部变量 
 
+```javascript
+function a(x){
+    var arr = 1;
+    function b(){
+        console.log(arr);
+    }
+    return {
+        fb : b,
+        brr : arr
+    }
+}
+var brr = a();
+brr.fb(); //1
+console.log(brr.brr); //1
+```
+
+闭包作用域是函数内部，内存不释放
+
+```javascript
+function a(x){
+    return function(){
+        return x++;
+    };
+}
+var arr = a(5);
+console.log(arr()); //5
+console.log(arr()); //6
+console.log(arr()); //7
+```
+
+闭包-构造函数  
+
+```javascript
+function a(){
+    var age;
+    function getAge(){
+        return age;
+    }
+    function setAge(a){
+        age = a;
+    }
+    return {
+        getage:getAge,
+        setage:setAge
+    }
+}
+var b = a();
+b.setage(5);
+console.log(b.getage()); //5
+```
+
+## 立即调用函数
+
+`(function(){ /* code */ })();`  
+通常情况下，只对匿名函数使用这种“立即执行的函数表达式”。它的目的有两个：一是不必为函数命名，避免了污染全局变量；二是 IIFE 内部形成了一个单独的作用域，可以封装一些外部无法读取的私有变量。  
+
+***eval的本质是在当前作用域之中，注入代码。由于安全风险和不利于 JavaScript 引擎优化执行速度，所以一般不推荐使用。通常情况下，eval最常见的场合是解析 JSON 数据的字符串，不过正确的做法应该是使用原生的JSON.parse方法***

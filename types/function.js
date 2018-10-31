@@ -73,12 +73,62 @@
 // b(obj);
 // console.log(obj.p);
 
+// arguments
+// var f = function(a,b,c){
+//     'use strict';
+//     arguments[0] = 3;
+//     return [(a+b+c),arguments.length];
+// }
+// console.log(f(1,2,3)); //6
 
-var f = function(a,b,c){
-    'use strict';
-    arguments[0] = 3;
-    return [(a+b+c),arguments.length];
-}
-console.log(f(1,2,3)); //6
+// 闭包
+// function a(x){
+//     var arr = 1;
+//     function b(){
+//         console.log(arr);
+//     }
+//     return {
+//         fb : b,
+//         brr : arr
+//     }
+// }
+// var brr = a();
+// console.log(brr.brr);
 
 
+// function a(x){
+//     return function(){
+//         return x++;
+//     };
+// }
+// var arr = a(5);
+// console.log(arr());
+// console.log(arr());
+// console.log(arr());
+
+
+
+// function a(){
+//     var age;
+//     function getAge(){
+//         return age;
+//     }
+//     function setAge(a){
+//         age = a;
+//     }
+//     return {
+//         getage:getAge,
+//         setage:setAge
+//     }
+// }
+// var b = a();
+// b.setage(5);
+// console.log(b.getage());
+
+// 立即调用
+// (
+//     function a(x){
+//         var a = 2;
+//         console.log(x);
+//     }
+// )(5);
