@@ -36,7 +36,13 @@
   s.length = 3;
   s.length // 5
   ```
-
+- 字符串遍历
+  ```javascript
+    var aaa = '1321321'
+    Array.prototype.forEach.call(aaa,element => {
+        console.log(element)
+    })  
+  ```
 
 ## 转义
 

@@ -56,6 +56,7 @@ console.log(
     0 || 'abc',
     '' || 1 || 0,
     1 || 'a' || 'b'
+    0 || '' || false
 );
 // 1 2 'a' 'abc' 1 1 false
 ```

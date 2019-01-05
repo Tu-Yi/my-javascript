@@ -1,3 +1,12 @@
+/*
+var o1 = {}
+var o2 = o1
+o2.a = 1
+console.log(o1.a) //1
+o1.b = 2
+console.log(o2.b)//2
+*/
+
 /* 数字属性
 var obj = {
     0.7: 'Hello World'
@@ -36,12 +45,12 @@ console.log(Object.keys(obj));
 // console.log('valueOf' in obj);
 // console.log(obj.hasOwnProperty('toString'));
 
-// 遍历属性
-// var obj = { p : 123};
-// for (const key in obj) {
-//     if (obj.hasOwnProperty(key)) {
-//         const element = obj[key];
-//         console.log(element);
-//     }
-// }
-
+/* 遍历对象
+var obj = { p : 123};
+for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+        const element = obj[key];
+        console.log(key,element);
+    }
+}
+ */

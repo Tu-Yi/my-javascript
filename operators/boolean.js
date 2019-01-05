@@ -1,4 +1,4 @@
-
+/* 
 console.log(
     1 && 2,
     0 && 2,
@@ -7,8 +7,8 @@ console.log(
     '' && 1 && 0,
     1 && 'a' && 'b'
 );
-// 2 0 'b' 0 '' 'b'
-
+// 2 0 'b' 0 '' 'b' */
+/* 
 console.log(
     1 || 2,
     0 || 2,
@@ -18,4 +18,4 @@ console.log(
     1 || 'a' || 'b',
     0 || '' || false
 );
-// 1 2 'a' 'abc' 1 1 false
+// 1 2 'a' 'abc' 1 1 false */
