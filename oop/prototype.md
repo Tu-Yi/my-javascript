@@ -134,3 +134,71 @@ function Fubar (foo, bar) {
   }
 }
 ```
+
+## 构造函数的继承
+让一个构造函数继承另一个构造函数，是非常常见的需求。这可以分成两步实现。第一步是在子类的构造函数中，调用父类的构造函数
+
+```javascript
+function Sub(value) {
+  Super.call(this);
+  this.prop = value;
+}
+
+//第二步，是让子类的原型指向父类的原型，这样子类就可以继承父类原型
+Sub.prototype = Object.create(Super.prototype);
+Sub.prototype.constructor = Sub;
+Sub.prototype.method = '...';
+
+
+function Shape() {
+  this.x = 0;
+  this.y = 0;
+}
+
+Shape.prototype.move = function (x, y) {
+  this.x += x;
+  this.y += y;
+  console.info('Shape moved.');
+};
+
+function Rectangle(){
+  Shape.call(this)
+}
+Rectangle.prototype = Object.create(Shape.prototype)
+Rectangle.prototype.constructor = Rectangle
+
+var rec = new Rectangle()
+rec.move(1,2)
+```
+
+## 多重继承
+
+```javascript
+function M1() {
+  this.hello = 'hello';
+}
+
+function M2() {
+  this.world = 'world';
+}
+
+function S() {
+  M1.call(this);
+  M2.call(this);
+}
+
+// 继承 M1
+S.prototype = Object.create(M1.prototype);
+// 继承链上加入 M2
+Object.assign(S.prototype, M2.prototype);
+
+// 指定构造函数
+S.prototype.constructor = S;
+
+var s = new S();
+s.hello // 'hello'
+s.world // 'world'
+```
+子类S同时继承了父类M1和M2。这种模式又称为 Mixin（混入）
+
+## 模块
