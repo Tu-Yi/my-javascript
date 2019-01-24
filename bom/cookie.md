@@ -55,4 +55,71 @@ Set-Cookie: <cookie-name>=<cookie-value>; HttpOnly
 上面的命令设置了一个全新的同名 Cookie，但是path属性不一样。下一次访问example.com/blog的时候，浏览器将向服务器发送两个同名的 Cookie
 `Cookie: key1=value1; key1=value2`
 
+### HTTP 请求：Cookie 的发送
+浏览器向服务器发送 HTTP 请求时，每个请求都会带上相应的 Cookie。也就是说，把服务器早前保存在浏览器的这段信息，再发回服务器。这时要使用 HTTP 头信息的Cookie字段
+Cookie字段可以包含多个 Cookie，使用分号（;）分隔
+`Cookie: name=value; name2=value2; name3=value3`
+
+服务器收到浏览器发来的 Cookie 时，有两点是无法知道的。
+
+- Cookie 的各种属性，比如何时过期。
+- 哪个域名设置的 Cookie，到底是一级域名设的，还是某一个二级域名设的
+
+
+## Cookie 的属性
+### Expires，Max-Age
+Expires属性指定一个具体的到期时间，到了指定时间以后，浏览器就不再保留这个 Cookie。它的值是 UTC 格式，可以使用Date.prototype.toUTCString()进行格式转换
+`Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;`
+如果不设置该属性，或者设为null，Cookie 只在当前会话（session）有效，浏览器窗口一旦关闭，当前 Session 结束，该 Cookie 就会被删除。另外，浏览器根据本地时间，决定 Cookie 是否过期，由于本地时间是不精确的，所以没有办法保证 Cookie 一定会在服务器指定的时间过期
+Max-Age属性指定从现在开始 Cookie 存在的秒数，比如60 * 60 * 24 * 365（即一年）。过了这个时间以后，浏览器就不再保留这个 Cookie
+如果同时指定了Expires和Max-Age，那么Max-Age的值将优先生效
+如果Set-Cookie字段没有指定Expires或Max-Age属性，那么这个 Cookie 就是 Session Cookie，即它只在本次对话存在，一旦用户关闭浏览器，浏览器就不会再保留这个 Cookie
+
+### Domain，Path
+Domain属性指定浏览器发出 HTTP 请求时，哪些域名要附带这个 Cookie。如果没有指定该属性，浏览器会默认将其设为当前域名，这时子域名将不会附带这个 Cookie比如，example.com不设置 Cookie 的domain属性，那么sub.example.com将不会附带这个 Cookie。如果指定了domain属性，那么子域名也会附带这个 Cookie。如果服务器指定的域名不属于当前域名，浏览器会拒绝这个 Cookie
+
+
+Path属性指定浏览器发出 HTTP 请求时，哪些路径要附带这个 Cookie。只要浏览器发现，Path属性是 HTTP 请求路径的开头一部分，就会在头信息里面带上这个 Cookie。比如，PATH属性是/，那么请求/docs路径也会包含该 Cookie。当然，前提是域名必须一致
+
+### Secure，HttpOnly
+Secure属性指定浏览器只有在加密协议 HTTPS 下，才能将这个 Cookie 发送到服务器。另一方面，如果当前协议是 HTTP，浏览器会自动忽略服务器发来的Secure属性。该属性只是一个开关，不需要指定值。如果通信是 HTTPS 协议，该开关自动打开
+
+HttpOnly属性指定该 Cookie 无法通过 JavaScript 脚本拿到，主要是document.cookie属性、XMLHttpRequest对象和 Request API 都拿不到该属性。这样就防止了该 Cookie 被脚本读到，只有浏览器发出 HTTP 请求时，才会带上该 Cookie
+
+## document.cookie
+document.cookie属性用于读写当前网页的 Cookie
+读取的时候，它会返回当前网页的所有 Cookie，前提是该 Cookie 不能有HTTPOnly属性
+```javascript
+document.cookie // "foo=bar;baz=bar"
+
+var cookies = document.cookie.split(';');
+
+for (var i = 0; i < cookies.length; i++) {
+  console.log(cookies[i]);
+}
+```
+
+document.cookie属性是可写的，可以通过它为当前网站添加 Cookie
+`document.cookie = 'fontSize=14';`
+
+写入的时候，Cookie 的值必须写成key=value的形式。注意，等号两边不能有空格。另外，写入 Cookie 的时候，必须对分号、逗号和空格进行转义（它们都不允许作为 Cookie 的值），这可以用encodeURIComponent方法达到
+document.cookie一次只能写入一个 Cookie，而且写入并不是覆盖，而是添加
+
+document.cookie读写行为的差异（一次可以读出全部 Cookie，但是只能写入一个 Cookie），与 HTTP 协议的 Cookie 通信格式有关。浏览器向服务器发送 Cookie 的时候，Cookie字段是使用一行将所有 Cookie 全部发送；服务器向浏览器设置 Cookie 的时候，Set-Cookie字段是一行设置一个 Cookie
+
+写入 Cookie 的时候，可以一起写入 Cookie 的属性。
+
+`document.cookie = "foo=bar; expires=Fri, 31 Dec 2020 23:59:59 GMT";`
+各个属性的写入注意点如下。
+
+- path属性必须为绝对路径，默认为当前路径。
+- domain属性值必须是当前发送 Cookie 的域名的一部分。比如，当前域名是example.com，就不能将其设为foo.com。该属性默认为当前的一级域名（不含二级域名）。
+- max-age属性的值为秒数。
+- expires属性的值为 UTC 格式，可以使用Date.prototype.toUTCString()进行日期格式转换。
+
+删除一个现存 Cookie 的唯一方法，是设置它的expires属性为一个过去的日期
+`document.cookie = 'fontSize=;expires=Thu, 01-Jan-1970 00:00:01 GMT';`
+
+
+
 
