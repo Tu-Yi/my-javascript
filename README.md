@@ -1,5 +1,16 @@
 # my-javascript
 
+参考资料：
+> 《阮一峰JavaScript教程》
+《ES6标准入门第3版》
+《JavaScript高级程序设计(第3版)》
+《JavaScript语言精粹》
+
+修改日志：
+> [2019.1.28] 完成ES5知识内容整理
+
+## es5
+
 - [基础语法](basic/README.md)
 - [数据类型](types/README.md) 
     - [null-undefined](types/null-undefined.md)
