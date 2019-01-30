@@ -9,7 +9,11 @@
 修改日志：
 > [2019.1.28] 完成ES5知识内容整理
 
-## es5
+## ES6
+
+
+
+## ES5
 
 - [基础语法](basic/README.md)
 - [数据类型](types/README.md) 
