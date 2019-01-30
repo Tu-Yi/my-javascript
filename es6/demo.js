@@ -179,4 +179,13 @@ obj.show = function(){
 console.log(obj.show())
 console.log(obj.show.bind(obj2)()) */
 
+/* var arr = 2
+function a(){
+    console.log(arr)
+    console.log(brr);
+    let arr = 1;
+    var brr = 1;
+}
+a();// arr is not defined
+ */
 

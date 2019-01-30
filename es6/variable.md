@@ -39,6 +39,15 @@ if(1){
 console.log(a2)
 console.log(b2) // b2 is not defined
 console.log(c2) // c2 is not defined
+
+//let没有变量提升
+function a(){
+    console.log(arr)
+    console.log(brr);
+    let arr = 1;
+    var brr = 1;
+}
+a();// arr is not defined
 ```
 
 ## 解构赋值
