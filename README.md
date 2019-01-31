@@ -1,5 +1,7 @@
 # my-javascript
 
+**javascript语法整理，持续更新**
+
 参考资料：
 > 《阮一峰JavaScript教程》
 《ES6标准入门第3版》

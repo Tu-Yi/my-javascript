@@ -11,7 +11,7 @@ javascript的数据类型共有六种:
 - 布尔值（[boolean](boolean.md)）：true和false
 - [undefined](null-undefined.md)：未赋值或不存在
 - [null](null-undefined.md)：空
-- 对象([object](object.js)，[array](array.js)，[function](function.js))：集合
+- 对象([object](object.md)，[array](array.md)，[function](function.md))：集合
 
 ## typeof
 
