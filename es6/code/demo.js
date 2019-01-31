@@ -189,3 +189,17 @@ function a(){
 a();// arr is not defined
  */
 
+
+/*  function *show(){
+     console.log(1);
+     let n = yield 55;
+     console.log(2+n);
+     return 66;
+ }
+let gen = show();
+let res1 = gen.next();
+console.log(res1)
+let res2 = gen.next(12);
+console.log(res2) */
+
+

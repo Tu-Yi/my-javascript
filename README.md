@@ -7,10 +7,18 @@
 《JavaScript语言精粹》
 
 修改日志：
-> [2019.1.28] 完成ES5知识内容整理
+> [2019.1.31] 完成ES6知识内容整理
+[2019.1.28] 完成ES5知识内容整理
 
 ## ES6
 
+- [变量](es6/variable.md)
+- [函数](es6/function.md)
+- [数组](es6/array.md)
+- [字符串](es6/string.md)
+- [面向对象](es6/oop.md)
+- [异步](es6/async.md)
+- [编译](es6/compile.md)
 
 
 ## ES5
@@ -96,13 +104,16 @@
     - [IndexedDB API](bom/indexeddb.md)
     - [Web Worker](bom/webworker.md)
 - [网页元素](elements/README.md)
-    - [a](a.md)
-    - [img](image.md)
-    - [form](form.md)
-    - [input](input.md)
-    - [button](button.md)
-    - [option](option.md)
-    - [video，audio](video.md)
+    - [a](elements/a.md)
+    - [img](elements/image.md)
+    - [form](elements/form.md)
+    - [input](elements/input.md)
+    - [button](elements/button.md)
+    - [option](elements/option.md)
+    - [video，audio](elements/video.md)
 
+## License
+
+MIT
 
 javascript base | keep updating
