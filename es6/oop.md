@@ -2,6 +2,9 @@
 
 ## class语法糖
 
+- class/constructor
+- extends/super
+
 ```javascript
 class Animal{
     constructor(name){

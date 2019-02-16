@@ -101,7 +101,7 @@ Promise.all([
 
 
 1. promise解除异步操作
-2. 局限：后面请求需要依赖前面请求的，promise无效
+2. 局限：带逻辑的异步操作麻烦,后面请求需要依赖前面请求的，promise无效
 
 ## axios
 ```javascript
