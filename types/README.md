@@ -13,6 +13,7 @@ javascript的数据类型共有六种:
 - [null](null-undefined.md)：空
 - 对象([object](object.md)，[array](array.md)，[function](function.md))：集合
 
+
 ## typeof
 
 ```javascript
@@ -32,5 +33,6 @@ console.log(typeof undefined);//undefined
 ```javascript
 var arr;
 console.log(arr===undefined);//true
+console.log(typeof arr===undefined);//true
 console.log(typeof v === "undefined");//true
 ```

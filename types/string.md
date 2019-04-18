@@ -19,6 +19,11 @@
   long \
   long \
   string';
+
+  var longString = `Long 
+  long 
+  long 
+  string`;
   ```
 
 - 字符串可以被视为字符数组，因此可以使用数组的方括号运算符，但仅此而已
@@ -40,8 +45,11 @@
   ```javascript
     var aaa = '1321321'
     Array.prototype.forEach.call(aaa,element => {
-        console.log(element)
+      console.log(element)
     })  
+    Array.from(aaa).forEach(item=>{
+      console.log(item)
+    })
   ```
 
 ## 转义
