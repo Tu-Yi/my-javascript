@@ -2,7 +2,7 @@
 
 [demo](null-undefined.js)
 
-特性
+## 特性
 
 - boolean值都为false
 - 相等运算符下，两者相等`undefined==null //true`
@@ -29,3 +29,9 @@ console.log(o.p);
 
 //全部是undefined
 ```
+
+## 惯例
+
+对象现在不想赋值，可以赋给 null
+
+非对象现在不想赋值，可以赋给undefined或者直接不赋值
