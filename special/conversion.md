@@ -4,9 +4,19 @@
 
 javascript是一种动态类型语言，没法在编译阶段知道类型，必须等到运行时才能知道 
 
+
+
+![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-04-26_10-38-38.png)
+
+
+
+ ### ![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-04-26_10-42-45.png)
+
+
+
 ## 强制转换
 
-### Number()
+### Number(n) && parseInt && +n && n-0
 
 ```javascript
 console.log(Number(123)) // 123
@@ -31,7 +41,23 @@ console.log(Number([5]))  // 5
 
 第三步，如果toString方法返回的是对象，就报错。
 
-### String()
+```javascript
+console.log(Number('')) //0
+console.log(Number(null)) //0
+console.log(Number(undefined)) //NaN
+console.log(Number([])) //0
+console.log(Number({})) //NaN
+
+console.log(parseInt('')) //NaN
+console.log(parseInt(null)) //NaN
+console.log(parseInt(undefined)) //NaN
+console.log(parseInt([])) //NaN
+console.log(parseInt({})) //NaN
+```
+
+
+
+### String(n) && n+''
 
 - 数值：转为相应的字符串。
 - 字符串：转换后还是原来的值。
@@ -55,9 +81,11 @@ String([1, 2, 3]) // "1,2,3"
 2. 如果toString方法返回的是对象，再调用原对象的valueOf方法。如果valueOf方法返回原始类型的值，则对该值使用String函数，不再进行以下步骤。
 3. 如果valueOf方法返回的是对象，就报错。
 
-### Boolean()
+### Boolean(n) && !!n
 
 转换规则相对简单：除了以下五个值的转换结果为false，其他的值全部为true。
+
+**falsy值**
 
 - undefined
 - null
@@ -74,6 +102,26 @@ Boolean(new Boolean(false)) // true
 ```
 
 所有对象的布尔值都是true，这是因为 JavaScript 语言设计的时候，出于性能的考虑，如果对象需要计算才能得到布尔值，对于obj1 && obj2这样的场景，可能会需要较多的计算。为了保证性能，就统一规定，对象的布尔值为true。
+
+```javascript
+console.log(Boolean('')) //false
+console.log(Boolean('   ')) //true
+console.log(Boolean(null)) //false
+console.log(Boolean(undefined)) //false
+console.log(Boolean([])) //true
+console.log(Boolean({})) //true
+console.log(Boolean({name: 1})) //true
+
+console.log(!!'') //false
+console.log(!!'   ') //true
+console.log(!!null) //false
+console.log(!!undefined) //false
+console.log(!![]) //true
+console.log(!!{}) //true
+console.log(!!{name: 1}) //true
+```
+
+
 
 ## 自动转换
 
