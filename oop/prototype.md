@@ -62,6 +62,31 @@ Object.prototype的原型是null。null没有任何属性和方法，也没有�
 
 注意，一级级向上，在整个原型链上寻找某个属性，对性能是有影响的。所寻找的属性在越上层的原型对象，对性能的影响越大。如果寻找某个不存在的属性，将会遍历整个原型链
 
+```javascript
+var MyArray = function () {};
+
+MyArray.prototype = new Array();
+MyArray.prototype.constructor = MyArray;
+
+var mine = new MyArray();
+mine.push(1, 2, 3);
+mine.length // 3
+mine instanceof Array // true
+```
+
+```javascript
+var MyArray = function () {};
+undefined
+MyArray.prototype
+{constructor: ƒ}constructor: ƒ ()__proto__: Object
+MyArray.prototype=new Array()
+[]
+var mine = new MyArray();
+undefined
+mine.__proto__
+[]
+```
+
 ### constructor 属性
 prototype对象有一个constructor属性，默认指向prototype对象所在的构造函数
 `function P() {} P.prototype.constructor === P // true`

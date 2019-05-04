@@ -2,7 +2,13 @@
 
 JavaScript 的所有其他对象都继承自Object对象，即那些对象都是Object的实例
 
-Object对象的原生方法分成两类：Object本身的方法与Object的实例方法
+对象可以直接调用共用属性区的方法
+
+`obj.__proto__ === Object.prototype`
+
+![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-05-04_10-26-35.png)
+
+Object对象的原生方法分成两类：**Object本身的方法与Object的实例方法**
 
 Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象
 
@@ -125,7 +131,7 @@ Object.isFrozen()：判断一个对象是否被冻结。
 Object.create()：该方法可以指定原型对象和属性，返回一个新的对象。
 Object.getPrototypeOf()：获取对象的Prototype对象。
 
-## Object 的实例方法
+## Object 的实例方法-公共属性
 
 除了静态方法，还有不少方法定义在Object.prototype对象。它们称为实例方法，所有Object的实例对象都继承了这些方法
 

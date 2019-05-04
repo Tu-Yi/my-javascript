@@ -91,3 +91,59 @@ split方法还可以使用正则表达式作为参数
 **String.prototype.localeCompare()**
 localeCompare方法用于比较两个字符串。它返回一个整数，如果小于0，表示第一个字符串小于第二个字符串；如果等于0，表示两者相等；如果大于0，表示第一个字符串大于第二个字符串
 `'apple'.localeCompare('banana') // -1`
+
+
+
+```javascript
+var s1 = '  hello  '
+var s2 = 'world'
+
+//字符串长度
+console.log(s1.length) //9 包括空格
+//根据索引获取字符
+console.log(s2[1]) //o
+//获取子字符串的索引，没有返回-1
+console.log(s2.indexOf('rl')) //2
+console.log(s2.indexOf('yk')) //-1
+//检查字符串是否包含
+console.log(s2.indexOf('ld')===-1) //false
+console.log(s2.includes('wo')) //true  IE不支持
+//去除头尾空格
+console.log(s1.trim()) //hello
+//连接
+console.log(s1.trim().concat(s2)) //helloworld
+//切片 不包含末尾
+console.log(s2.slice(0,1)) //w
+console.log(s2.slice(0,2))  //wo
+//以字符分隔字符串，返回数组
+console.log(s2.split('o')) //[ 'w', 'rld' ]
+//替换
+console.log(s2.replace('o','e')) //werld
+//转换大小写
+console.log(s2.toUpperCase()) //WORLD
+//遍历字符串
+Array.from(s2).forEach((s,i)=>{
+    console.log(i+":"+s)
+})
+```
+
+```javascript
+var stringValue = "hello world";
+
+console.log(stringValue.slice(3));          //”lo world”
+console.log(stringValue.substring(3));      //”lo world”
+console.log(stringValue.substr(3));        //”lo world”
+
+console.log(stringValue.slice(3,7));         //”lo w”
+console.log(stringValue.substring(3,7));    //”lo w”
+console.log(stringValue.substr(3,7));       //”lo worl”
+
+console.log(stringValue.slice(-3));         //"rld"　从后往前数3个开始
+console.log(stringValue.substring(-3));     //"hello world" 为负，默认从0开始
+console.log(stringValue.substr(-3));        //"rld"
+
+console.log(stringValue.slice(3,-4));       //”lo w”　下标从3开始到-4(从后往前数4个)
+console.log(stringValue.substring(3,-4));   //”hel”　
+console.log(stringValue.substr(3,-4));      //””　长度为负，默认不显示
+```
+

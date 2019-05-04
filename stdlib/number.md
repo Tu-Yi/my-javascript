@@ -1,5 +1,24 @@
 # Number 对象
 
+```javascript
+var n1 = 1
+var n2 = new Number(1)
+console.log(n1) //1
+console.log(n2) //[Number: 1]
+
+console.log(n1.toString()) //"1"
+console.log(n2.toString()) //"1"
+```
+
+n1之所以可以有toString方法，是因为javascript开辟了临时变量，调用了new Number(1)，这句话结束，临时变量就被销毁了，所以看下面
+
+```javascript
+n1.yk = 2
+console.log(n1.yk) //undefined
+```
+
+
+
 ## 静态属性
 Number对象拥有以下一些静态属性（即直接定义在Number对象上的属性，而不是定义在实例上的属性）。
 

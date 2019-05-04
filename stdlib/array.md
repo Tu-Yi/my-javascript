@@ -210,6 +210,22 @@ function log(element, index, array) {
 forEach方法也可以接受第二个参数，绑定参数函数的this变量
 注意，forEach方法无法中断执行，总是会将所有成员遍历完。如果希望符合某种条件时，就中断遍历，要使用for循环
 
+**map和foreach都要注意this的绑定**
+
+```javascript
+var arr = [1,2,3,4,5];
+undefined
+var out = [];
+undefined
+arr.forEach(function(elem) {
+  console.log(this)
+}, out);
+```
+
+
+
+![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-05-04_10-59-26.png)
+
 ### filter()
 filter方法用于过滤数组成员，满足条件的成员组成一个新数组返回,该方法不会改变原数组
 
