@@ -28,6 +28,8 @@
 
 - [基础语法](basic/README.md)
 - [数据类型](types/README.md) 
+    - [JS的数据类型](types/datatype.md)
+    - [JS数据类型转换](types/convert.md)
     - [null-undefined](types/null-undefined.md)
     - [boolean](types/boolean.md)
     - [number](types/number.md)
