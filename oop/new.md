@@ -20,9 +20,7 @@ v.price // 1000
 var Vehicle = function () {
   this.price = 1000;
 };
-undefined
 var v = new Vehicle();
-undefined
 v
 Vehicle {price: 1000}price: 1000__proto__: Object
 v.__proto__ === Vehicle.prototype
@@ -95,9 +93,7 @@ var person1 = {
     console.log('Hi! I\'m ' + this.name + '.');
   }
 };
-undefined
 var person2 = Object.create(person1);
-undefined
 person2.name
 "张三"
 person2.__proto__ === person1.prototype
