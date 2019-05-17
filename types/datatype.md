@@ -11,6 +11,12 @@ javascript的数据类型共有六种:
 - [null](null-undefined.md)：空
 - 对象([object](object.md)，[array](array.md)，[function](function.md))：集合
 
+
+
+![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-05-17_19-37-40.png)
+
+
+
 ### typeof
 
 ```javascript

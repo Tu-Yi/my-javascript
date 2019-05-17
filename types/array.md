@@ -75,6 +75,22 @@ arr[100] = 'a';
 
 *不要使用for in，它会把非数字键也遍历出来*
 
+```javascript
+var arr = [1,2,3]
+arr.xxx = 'xxx'
+"xxx"
+arr.forEach(function(item){console.log(item)})
+VM406:1 1
+VM406:1 2
+VM406:1 3
+
+for(let a in arr){console.log(a)}
+VM478:1 0
+VM478:1 1
+VM478:1 2
+VM478:1 xxx
+```
+
 for  
 
 ```javascript
