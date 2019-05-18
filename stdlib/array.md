@@ -106,6 +106,11 @@ concat方法用于多个数组的合并。它将新数组的成员，添加到�
 var arr = [1,2,3,4,5]
 var brr = arr.concat(6,7,8)
 console.log(brr)
+
+var a = [1,2,3]
+var b = a.concat([])
+console.log(b)  //[1,2,3]
+a === b  //false
 ```
 
 ### reverse()
@@ -175,6 +180,11 @@ sort方法对数组成员进行排序，默认是按照字典顺序排序。排�
 })
 // [111, 1101, 10111]
 
+[10111, 1101, 111].sort(function (a, b) {
+  return b - a;
+})
+// [10111, 1101, 111]
+
 [
   { name: "张三", age: 30 },
   { name: "李四", age: 24 },
@@ -203,7 +213,7 @@ var brr = [1,2]
 var crr = brr.map(function (e) {
   return this[e]
 }, arr)
-console.log(crr)
+console.log(crr)  //[ 'b', 'c' ]
 ```
 
 ### forEach()
@@ -334,7 +344,32 @@ function findLongest(entries) {
 findLongest(['aaa', 'bb', 'c']) // "aaa"
 ```
 
+**reduce才是唯一的数组函数**
+
+```javascript
+// 代替filter
+let a = [1,2,3,4,5,6,7,8,9,10]
+let b = a.reduce((arr,n)=>{
+    if(n%2===0){
+        arr.push(n);
+    }
+    return arr;
+},[])
+console.log(b)  //[ 2, 4, 6, 8, 10 ]
+
+//代替map
+let a = [1,2,3,4,5,6,7,8,9,10]
+let b = a.reduce((arr,n)=>{
+    arr.push(n*2);
+    return arr;
+},[])
+console.log(b)  
+//[ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ]
+```
+
+
 ### indexOf()，lastIndexOf()
+
 indexOf方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回-1
 lastIndexOf方法返回给定元素在数组中最后一次出现的位置，如果没有出现则返回-1
 `var a = ['a', 'b', 'c']; a.indexOf('b') // 1 a.indexOf('y') // -1`

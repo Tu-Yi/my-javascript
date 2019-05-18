@@ -19,10 +19,27 @@ function f(s){
 ```javascript
 var f = function(s){
     console.log(s);
-};
+}; //需要分号  
+
+var x = function y(param) {  }
+console.log(y)  //报错 js垃圾的地方
 ```
 
-需要分号  
+函数对象定义函数
+
+```javascript
+var f= new window.Function('x','y','return x+y')
+console.log(f(1,2))
+```
+
+箭头函数
+
+```javascript
+var sum = (x,y)=>x+y;
+console.log(sum(1,2))
+```
+
+
 
 ### 递归
 
@@ -83,6 +100,9 @@ function test(f) {
 }
 
 test(myFunc) // myFunc  获取参数函数的名字
+
+var f= new window.Function('x','y','return x+y')
+console.log(f.name)  //anonymous
 ```
 
 ### length
