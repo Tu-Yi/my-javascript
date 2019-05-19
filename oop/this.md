@@ -27,7 +27,7 @@ var name = 'kangkang'
 var f = function() {
     return this.name;
 }
-console.log(f())  //undefined
+console.log(f())  //kangkang
 
 var name = 'kangkang'
 var f = function() {
@@ -62,7 +62,7 @@ obj.f() // 2
 
 由于this的指向是不确定的，所以切勿在函数中包含多层的this
 ```javascript
-//第二层指向全局对象
+//嵌套函数指向全局对象
 var a = 2
 var o = {
 a: 1,

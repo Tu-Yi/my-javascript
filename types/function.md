@@ -39,7 +39,47 @@ var sum = (x,y)=>x+y;
 console.log(sum(1,2))
 ```
 
+### ⭐函数调用 call
 
+- 尽量使用call调用函数，第一个参数就是函数的this
+- call的第一个参数如果是undefined，非严格模式下，this是全局对象
+
+```javascript
+var f = function(s){
+    console.log(s);
+};
+f.call(undefined,1)
+
+let f = function(){
+    console.log(this)
+}
+//f.call(undefined)  //global  window
+f.call(1) //[Number: 1]
+
+function f(){
+    'use strict'
+    console.log(this)
+}
+f.call(1) //1
+
+let f = function(){
+    'use strict'
+    console.log(this)
+}
+f.call(undefined)  //undefined
+```
+
+### 函数是对象
+
+```javascript
+let f = {}
+f.params = {0:'x',1:'y'}
+f.body = 'console.log(this.params[0])'
+f.call = function(){
+    eval(f.body)
+}
+f.call();  //x
+```
 
 ### 递归
 
@@ -103,6 +143,9 @@ test(myFunc) // myFunc  获取参数函数的名字
 
 var f= new window.Function('x','y','return x+y')
 console.log(f.name)  //anonymous
+
+var f1 = function f2(){}
+console.log(f1.name)  //f2
 ```
 
 ### length
@@ -143,6 +186,50 @@ function f() {/*
 multiline(f);
 // " 这是一个
 //   多行注释"
+```
+
+### 作用域
+
+```javascript
+//变量提升
+var a = 1
+function f(){
+    console.log(a)  //undefined  f作用域内变量提升
+    var a = 2;
+}
+f()
+//函数作用域
+var a = 1
+function f(){
+    console.log(a)  //undefined  f作用域内变量提升
+    var a = 2;
+    f2()
+}
+function f2(){
+    console.log(a)  //1
+}
+f()
+
+var i = 2
+setTimeout(() => {
+    console.log(i)  //6
+}, 10000);
+i = 6
+
+<ul>
+  <li>选项1</li>
+  <li>选项2</li>
+  <li>选项3</li>
+  <li>选项4</li>
+  <li>选项5</li>
+  <li>选项6</li>
+</ul>
+var liTags = document.querySelectorAll('li')
+for(var i = 0; i<liTags.length; i++){
+    liTags[i].onclick = function(){
+        console.log(i) // 点击第3个 li 时，打印 2 还是打印 6？
+    }
+}
 ```
 
 ## 函数作用域
@@ -286,6 +373,10 @@ f() // true
 ```
 
 ## 闭包
+
+**函数访问了外部的变量 ，函数+变量就是闭包**
+
+[方应杭闭包](<https://zhuanlan.zhihu.com/p/22486908>)
 
 通过函数访问函数内部变量 
 
