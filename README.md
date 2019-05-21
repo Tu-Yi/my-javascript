@@ -72,6 +72,7 @@
     - [定时器](async/timer.md)
     - [Promise](async/promise.md)
 - [DOM](dom/dom.md)
+- [jQuery](dom/jquery.md)
 - [事件](events/README.md)
     - [EventTarget 接口](events/eventtarget.md)
     - [事件模型](events/model.md)
