@@ -48,7 +48,12 @@ function a(){
     var brr = 1;
 }
 a();// arr is not defined
+
+//const必须赋值
+const a  //Uncaught SyntaxError: Missing initializer in const declaration
 ```
+
+
 
 ## 解构赋值
 左右两边解构必须一样，右边必须是合法东西
@@ -59,6 +64,11 @@ let {a,b,c} = {a:12,b:5,c:8}
 
 let [{a,b}] = [{"a":1,"b":2}]
 console.log(a,b) //1,2
+
+let [name,age] = ['niliv',3]
+let p = {name,age}
+console.log(p)
+// {name: "niliv", age: 3}
  
 let [n,{a,b},m] = [12,{a:1,b:2},12]
 console.log(a,n,m,b)
@@ -67,7 +77,28 @@ let {a,b} = {1,2} //Unexpected token
 let [o,p];
 [o,p] = [1,2] //Missing initializer in destructuring declaration
 
+let [x,y] = [1,2];  //数组后面必须分号
+[x,y] = [y,x]
+
+//默认值
+let [c,b=2] = [3]
+//c 3
+//b 2
+
+let [x,y=2] = [3,4]
+//x 3
+//y 4
+
+let [m=2,n=3] = [undefined,null]
+//m 2
+//n null
+
+let {x,y=5} = {x:1}
+//x 1
+//y 5
+
 ```
+
 
 
 
