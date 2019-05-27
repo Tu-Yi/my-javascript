@@ -1,6 +1,13 @@
 # 数组/json
 
 ## 数组
+### 扩展
+```javascript
+var a=[1,2]
+var b = [...a,3]
+console.log(b) //1,2,3
+```
+
 ### map,reduce,filter,forEach
 都不会改变原数组
 #### map 映射
@@ -43,6 +50,8 @@ let str = '123123'
 Array.from(str).forEach(item=>console.log(item)) //123123
 Array.prototype.slice.call(str).forEach(item=>console.log(item))
 //123123
+
+[...str].forEach(item=>console.log(item)) 
 ```
 
 ## json
@@ -55,6 +64,7 @@ let b = 2
 let json_1 = {a,b}
 console.log(json_1) //{ a: 1, b: 2 }
 
+//对象里函数简写
 let json_2 = {
     a : 1,
     b : 2,

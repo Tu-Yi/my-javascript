@@ -12,4 +12,5 @@ JavaScript是ES的一种
 - [面向对象](oop.md)
 - [async](async.md)
 - [编译](compile.md)
+- [模块化](modal.md)
 

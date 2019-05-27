@@ -22,6 +22,7 @@
 - [面向对象](es6/oop.md)
 - [异步](es6/async.md)
 - [编译](es6/compile.md)
+- [模块化](es6/modal.md)
 
 
 ## ES5

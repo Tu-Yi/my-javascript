@@ -1,9 +1,9 @@
 # 字符串
 
 ## 字符串模板
-植入变量
-任意换行
+
 ```javascript
+//植入变量
 let obj = {
     name : 'yk',
     age : 12
@@ -11,6 +11,7 @@ let obj = {
 let str = `我叫：${obj.name},年龄：${obj.age}`
 console.log(str) //我叫：yk,年龄：12
 
+//任意换行
 let str2 = `<div>
     <p>hello</p>
 </div>`

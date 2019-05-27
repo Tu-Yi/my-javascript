@@ -32,6 +32,9 @@ c.cry();
 //猫:kitty叫 猫哭了
 ```
 
+
+
+
 ## this
 
 bind--给函数定死一个this,防止js的this乱变
