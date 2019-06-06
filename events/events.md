@@ -1,5 +1,11 @@
 # Events
 
+
+
+[Events教程](<https://wangdoc.com/javascript/events/index.html>)
+
+
+
 ### `addEventListener`
 
 ```javascript
@@ -14,6 +20,7 @@ images.addEventListener('click',f1)
 images.addEventListener('click',f2)
 images.removeEventListener('click',f1)
 //1
+//2
 ```
 
 **尽量使用`addEventListener`，而不是`on`**

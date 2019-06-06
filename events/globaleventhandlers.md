@@ -1,1 +1,0 @@
-[参考链接](https://wangdoc.com/javascript/events/globaleventhandlers.html)

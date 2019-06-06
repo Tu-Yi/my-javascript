@@ -1,1 +1,0 @@
-[表单，FormData 对象](https://wangdoc.com/javascript/bom/form.html)

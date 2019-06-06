@@ -1,1 +1,0 @@
-[IndexedDB API](https://wangdoc.com/javascript/bom/indexeddb.html)

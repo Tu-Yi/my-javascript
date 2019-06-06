@@ -37,7 +37,28 @@ console.log(add3()) //6
 console.log(add3(2,3)) //8
 ```
 
+```javascript
+function fn({title='a'}={title:'b'}){
+	console.log(title)
+}
+
+fn()
+b
+
+fn(1)
+a
+
+fn({name:'11'})
+a
+
+fn({})
+a
+```
+
+
+
 ## 参数展开
+
 `function(a,b,...名字)`  名字自定义
 剩余参数必须在参数列表的最后
 ```javascript

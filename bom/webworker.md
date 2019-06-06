@@ -1,1 +1,0 @@
-[Web Worker](https://wangdoc.com/javascript/bom/webworker.html)
