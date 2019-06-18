@@ -7,6 +7,19 @@
 用同步代码的方式去写异步代码
 
 **一个请求**
+
+```javascript
+$.ajax({
+    url: host+'list',
+    dataType: 'json'
+}).then(
+	(res)=>{console.log('success')},
+    (err)=>{console.log('fail')},
+)
+```
+
+
+
 ```javascript
 const host = 'http://localhost:8888/'
 let p = new Promise((resolve,reject)=>{
