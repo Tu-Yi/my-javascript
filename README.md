@@ -49,6 +49,8 @@
     - [错误处理机制](special/error.md)
     - [编程风格](special/style.md)
     - [console对象](special/console.md)
+    - [MVC模块化](special/module.md)
+    - [leancloud](special/leancloud.md)
 - [标准库](stdlib/README.md)
     - [Object 对象](stdlib/object.md)
     - [属性描述对象](stdlib/attributes.md)

@@ -20,3 +20,37 @@ testObject.save({
 })
 ```
 
+```javascript
+var query = new AV.Query('Message');
+query.find()
+  .then(
+    function (messages) {
+      console.log(messages)
+      let array = messages.map(item => item.attributes)
+      array.forEach(item => {
+        let li = document.createElement('li')
+        li.innerText = item.content
+        messageList.append(li)
+      });
+    },
+    function (error) {
+      console.log(error)
+    }
+  );
+```
+
+```javascript
+let myForm = document.querySelector('#postMessage')
+myForm.addEventListener('submit', function (e) {
+  e.preventDefault()
+  let content = myForm.querySelector('input[name=content]').value
+  var Message = AV.Object.extend('Message');
+  var message = new Message();
+  message.save({
+    'content': content
+  }).then(function (object) {
+    window.location.reload();
+  })
+})
+```
+

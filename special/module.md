@@ -90,3 +90,92 @@ var a = function(){
 }.call()
 ```
 
+```javascript
+! function () {
+
+  var view = document.querySelector('section.message')
+
+  var model = {
+    init: function () {
+      var APP_ID = 'qXl6W9vxbolyxcUCjs67LHQq-gzGzoHsz';
+      var APP_KEY = 'eOq0UluoW79IgUqEyAp1YIYe';
+
+      AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+      });
+    },
+    fetch: function () {
+      var query = new AV.Query('Message');
+      return query.find()
+    },
+    save: function (name, content) {
+      var Message = AV.Object.extend('Message');
+      var message = new Message();
+      return message.save({
+        'name': name,
+        'content': content
+      })
+    }
+  }
+
+  var controller = {
+    view: null,
+    model: null,
+    messageList: null,
+    form: null,
+    init: function (view, model) {
+      this.view = view
+      this.model = model
+      this.messageList = view.querySelector('#messageList')
+      this.form = view.querySelector('form')
+      this.model.init()
+      this.loadMessages()
+      this.bindEvents()
+    },
+
+    loadMessages: function () {
+      this.model.fetch()
+        .then(
+          (messages) => {
+            let array = messages.map(item => item.attributes)
+            array.forEach(item => {
+              let li = document.createElement('li')
+              li.innerText = `${item.name}: ${item.content}`
+              this.messageList.append(li)
+            });
+          },
+          function (error) {
+            console.log(error)
+          }
+        );
+    },
+    saveMessage: function () {
+      let myForm = this.form
+      let content = myForm.querySelector('input[name=content]').value
+      let name = myForm.querySelector('input[name=name]').value
+      this.model.save(name, content)
+        .then(function (object) {
+          let li = document.createElement('li')
+          li.innerText = `${object.attributes.name}: ${object.attributes.content}`
+          this.messageList.append(li)
+          myForm.querySelector('input[name=content]').value = ''
+        })
+    },
+    bindEvents: function () {
+      let myForm = this.form
+      myForm = document.querySelector('#postMessage')
+      var that = this
+      myForm.addEventListener('submit', function (e) {
+        e.preventDefault()
+        that.saveMessage()
+      })
+    }
+
+  }
+
+  controller.init(view, model)
+
+}.call()
+```
+
