@@ -1,5 +1,41 @@
 # 对象和new
 
+[new是干什么的](<https://juejin.im/post/584e1ac50ce463005c618ca2>)
+
+```javascript
+function Human({
+  name,
+  city
+}) {
+  this.name = name;
+  this.city = city;
+}
+Human.prototype.constructor = Human
+Human.prototype.species = '人类'
+Human.prototype.walk = function () {
+  console.log(this.name + 'walk')
+}
+Human.prototype.useTools = function () {
+  console.log(this.name + 'useTools')
+}
+
+export default Human;
+```
+
+```javascript
+import Human from './Human';
+
+
+var human = new Human({
+  name: 'Frank',
+  city: 'Hangzhou'
+})
+console.log(human.walk())
+console.log(human.__proto__.constructor === Human)
+```
+
+
+
 ## 构造函数
 **构造函数就差不多是自定义的包装类**
 

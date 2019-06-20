@@ -179,3 +179,129 @@ var a = function(){
 }.call()
 ```
 
+MVC
+
+```javascript
+window.View = function (selector) {
+  return document.querySelector(selector)
+}
+```
+
+```javascript
+window.Model = function ({
+  resourceName
+}) {
+  return {
+    init: function () {
+      var APP_ID = 'qXl6W9vxbolyxcUCjs67LHQq-gzGzoHsz';
+      var APP_KEY = 'eOq0UluoW79IgUqEyAp1YIYe';
+
+      AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+      });
+    },
+    fetch: function () {
+      var query = new AV.Query(resourceName);
+      return query.find()
+    },
+    save: function (object) {
+      var Instance = AV.Object.extend(resourceName);
+      var ins = new Instance();
+      return ins.save(object)
+    }
+  }
+}
+```
+
+```javascript
+window.Controller = function (options) {
+
+  var init = options.init
+
+  var object = {
+    view: null,
+    model: null,
+    init: function (view, model) {
+      console.log(this)
+      this.view = view
+      this.model = model
+      this.model.init()
+      init.call(this, view, model)
+      this.bindEvents.call(this)
+    }
+  }
+
+  for (const key in options) {
+    if (key !== 'init') {
+      object[key] = options[key]
+    }
+  }
+
+
+  return object
+}
+```
+
+```javascript
+! function () {
+
+  var view = View('section.message')
+
+  var model = Model({
+    resourceName: 'Message'
+  })
+
+  var controller = Controller({
+    messageList: null,
+    form: null,
+    init: function (view, model) {
+      console.log(this)
+      this.messageList = view.querySelector('#messageList')
+      this.form = view.querySelector('form')
+      this.loadMessages()
+    },
+    loadMessages: function () {
+      this.model.fetch()
+        .then(
+          (messages) => {
+            let array = messages.map(item => item.attributes)
+            array.forEach(item => {
+              let li = document.createElement('li')
+              li.innerText = `${item.name}: ${item.content}`
+              this.messageList.append(li)
+            });
+          },
+          function (error) {
+            console.log(error)
+          }
+        );
+    },
+    saveMessage: function () {
+      let myForm = this.form
+      let content = myForm.querySelector('input[name=content]').value
+      let name = myForm.querySelector('input[name=name]').value
+      this.model.save({
+          'name': name,
+          'content': content
+        })
+        .then(function (object) {
+          let li = document.createElement('li')
+          li.innerText = `${object.attributes.name}: ${object.attributes.content}`
+          this.messageList.append(li)
+          myForm.querySelector('input[name=content]').value = ''
+        })
+    },
+    bindEvents: function () {
+      this.form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        this.saveMessage()
+      })
+    }
+  })
+
+  controller.init(view, model)
+
+}.call()
+```
+
