@@ -10,7 +10,7 @@ npm包管理：自动下载，更新
 `cnpm init`
 `cnpm install babel-cli -D`
 package.json中加入执行命令
-`"build": "babel src -d dist"`
+`"build": "babel src -d dist --watch"`
 
 
 2. 创建目录

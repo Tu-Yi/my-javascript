@@ -199,3 +199,6 @@ async function show(){
 }
 show();
 ```
+
+![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-08-04_20-45-45.png?q-sign-algorithm=sha1&q-ak=AKIDYtRkHmu2auAbgukcDaPyIExVt64Atkwt&q-sign-time=1564922852;1564924652&q-key-time=1564922852;1564924652&q-header-list=&q-url-param-list=&q-signature=4855e47b23e867cb2b2b230314fb53ff6cf46b8a)
+

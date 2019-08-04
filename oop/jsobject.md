@@ -80,6 +80,31 @@ Animal.prototype.color // 'yellow'
 
 总结一下，原型对象的作用，就是定义所有实例对象共享的属性和方法。这也是它被称为原型对象的原因，而实例对象可以视作从原型对象衍生出来的子对象
 
+
+
+```javascript
+var object = {}
+object.__proto__ === Object.prototype
+
+var fn = function(){}
+fn.__proto__ === Function.prototype
+fn.__proto__.__proto__ === Object.prototype
+
+var array=[]
+array.__proto__ === Array.prototype
+array.__proto__.__proto__ === Object.prototype
+
+Function.__proto__ === Function.prototype
+Array.__proto__ === Function.prototype
+Object.__proto__ === Function.prototype
+
+true.__proto__ === Boolean.prototype
+
+Function.prototype.__proto__ === Object.prototype
+```
+
+
+
 ### 对象的原型
 
 ![](https://niliv-technology-1252830662.cos.ap-chengdu.myqcloud.com/javascript/Snipaste_2019-04-30_11-50-45.png)
