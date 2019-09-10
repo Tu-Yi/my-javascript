@@ -183,6 +183,9 @@ runner(show);
 
 人类2019.1.1日：javascript异步终极解决方案
 支持所有的函数，包括箭头函数，匿名函数
+
+https://segmentfault.com/a/1190000007535316
+
 ```javascript
 async function show(){
     try{
